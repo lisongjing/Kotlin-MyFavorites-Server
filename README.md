@@ -1,0 +1,2 @@
+# MyFavorites-Server
+The "My Favorites" project is a cross-platform online service that will provide users with functions such as recording moments of inspiration anytime and anywhere, organizing knowledge, and sharing Internet resources. Technically, the project will explore the full-stack development of cross-platform applications of modern microservice architecture in kotlin language.This repository is for Server-Side.
