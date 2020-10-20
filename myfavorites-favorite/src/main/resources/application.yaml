@@ -1,0 +1,54 @@
+server:
+  port: 9082
+  servlet:
+    context-path: /myfavorites/api
+
+spring:
+  application:
+    name: myfavorites-favorite
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name}
+        health-check-path: ${server.servlet.context-path}/actuator/health
+        health-check-interval: 15s
+  datasource:
+    url: jdbc:mysql://localhost:3306/myfavorites?useSSL=false&useUnicode=true&characterEncoding=UTF8&allowPublicKeyRetrieval=true
+    username: Your Username
+    password: Your Password
+    schema: classpath:database/schema.sql
+    sql-script-encoding: UTF-8
+    initialization-mode: always
+    jpa:
+      show-sql: true
+  redis:
+    host: localhost
+    port: 6379
+    password: Your Password
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: myfavorites
+      username: Your Username
+      password: Your Password
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 300MB
+  jackson:
+    default-property-inclusion: NON_NULL
+
+security:
+  oauth2:
+    client:
+      client-id: MyFavoritesServer
+      client-secret: Your Secret
+    resource:
+      token-info-uri: http://localhost:9081/myfavorites/api/oauth/check_token
+
+custom-params:
+  page-size: 50
+
